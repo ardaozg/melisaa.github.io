@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Melisa Aşkım</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffcccc, #ffe6e6);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      color: #b30000;
+      font-size: 3em;
+    }
+    p {
+      font-size: 1.5em;
+      color: #4d0000;
+    }
+    .heart {
+      font-size: 4em;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .btn-container {
+      margin-top: 30px;
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff6666;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #ff3333;
+    }
+    #loveMessage {
+      display: none;
+      font-size: 2em;
+      color: #990000;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="heart">❤</div>
+  <h1>Melisa Aşkım</h1>
+  <p>Seni üzdüğüm için özür dilerim...</p>
+  <p>Hadi barışalım, sensiz olmuyor...</p>
+  <button id="askButton" onclick="showOptions()">Barışalım mı?</button>
+
+  <div class="btn-container" id="choiceContainer">
+    <button id="yesBtn" onclick="yesChosen()">Evet</button>
+    <button id="noBtn" onclick="noClicked()">Hayır</button>
+  </div>
+
+  <div id="loveMessage">Seni çok seviyorum Melisa! ❤️</div>
+
+  <script>
+    let yesBtn = null;
+    let noBtn = null;
+    let fontSize = 1;
+
+    function showOptions() {
+      document.getElementById('askButton').style.display = 'none';
+      document.getElementById('choiceContainer').style.display = 'flex';
+      yesBtn = document.getElementById('yesBtn');
+      noBtn = document.getElementById('noBtn');
+    }
+
+    function yesChosen() {
+      document.getElementById('choiceContainer').style.display = 'none';
+      document.getElementById('loveMessage').style.display = 'block';
+    }
+
+    function noClicked() {
+      fontSize += 0.5;
+      yesBtn.style.transform = `scale(${fontSize})`;
+
+      noBtn.style.marginLeft = `${Math.random() * 200 - 100}px`;
+      noBtn.style.marginTop = `${Math.random() * 100 - 50}px`;
+
+      if (fontSize >= 6) {
+        noBtn.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
